@@ -3,6 +3,7 @@ import UserAnalytics from "@/components/admin/UserAnalytics";
 import StatCard from "@/components/admin/StatCard";
 import TrafficDevice from "@/components/admin/TrackingMenu";
 import TrafficLocation from "@/components/admin/MenuFavorit";
+import SideInfoCard from "@/components/SideInfoCard";
 export default function Dashboard() {
   // 1. Data Dummy: TOTAL USERS
   const usersData = [
@@ -38,20 +39,54 @@ export default function Dashboard() {
     { name: "Jul", thisYear: 1650, lastYear: 1400 },
   ];
 
-  const topMenuData = [
-    { menuName: "Kopi Susu Gula Aren", orders: 250 },
-    { menuName: "Nasi Goreng Spesial", orders: 180 },
-    { menuName: "Matcha Latte", orders: 120 },
-    { menuName: "Croissant Butter", orders: 90 },
-    { menuName: "Es Teh Manis", orders: 60 },
-  ];
+  const topMenuData = {
+    heading: "Top Menu",
+    items: [
+      {
+        title: "Kentang Spesial",
+        description: "1.000 order",
+      },
+      {
+        title: "Cappuccino Latte",
+        description: "860 order",
+      },
+      {
+        title: "Chicken Burger",
+        description: "720 order",
+      },
+    ],
+  };
 
   // 3. Data Dummy Kartu Atas
   const statsData = [
-    { label: "Total orderan", value: "7,265", percentage: "+11.01%", isUp: true, type: "purple" },
-    { label: "Orderan berhasil", value: "3,671", percentage: "-0.03%", isUp: false, type: "blue" },
-    { label: "Keuntungan hari ini", value: "156", percentage: "+15.03%", isUp: true, type: "purple" },
-    { label: "orderan hari ini", value: "2,318", percentage: "+6.08%", isUp: true, type: "blue" },
+    {
+      label: "Total orderan",
+      value: "7,265",
+      percentage: "+11.01%",
+      isUp: true,
+      type: "purple",
+    },
+    {
+      label: "Orderan berhasil",
+      value: "3,671",
+      percentage: "-0.03%",
+      isUp: false,
+      type: "blue",
+    },
+    {
+      label: "Keuntungan hari ini",
+      value: "156",
+      percentage: "+15.03%",
+      isUp: true,
+      type: "purple",
+    },
+    {
+      label: "orderan hari ini",
+      value: "2,318",
+      percentage: "+6.08%",
+      isUp: true,
+      type: "blue",
+    },
   ];
 
   return (
@@ -74,7 +109,26 @@ export default function Dashboard() {
 
       {/* Analytics Chart & Top Menu Section */}
       {/* Kirim semua dataset ke komponen */}
-      <UserAnalytics usersData={usersData} incomeData={incomeData} ordersData={ordersData} topProducts={topMenuData} />
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 w-full">
+        {/* LEFT: ANALYTICS */}
+        <div className="lg:col-span-3">
+          <UserAnalytics
+            usersData={usersData}
+            ordersData={ordersData}
+            defaultTab="users"
+            enabledTabs={["users","orders"]}
+          />
+        </div>
+
+        {/* RIGHT: SIDE INFO */}
+        <div className="lg:col-span-1">
+          <SideInfoCard
+            heading={topMenuData.heading}
+            items={topMenuData.items}
+          />
+        </div>
+      </div>
+
       {/* 3. NEW SECTION: Traffic Device & Location */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <TrafficDevice />

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Button from "./Button";
+import PrimaryButton from "./PrimaryButton";
 import { Coffee, Wifi, Armchair, DollarSign } from "lucide-react";
 
 function Carousel({ images }: { images: string[] }) {
@@ -97,12 +97,12 @@ export default function HeroSection() {
       </div>
 
       <div className="flex flex-col sm:flex-row justify-center gap-4">
-        <Button variant="primary" href="/menu">
+        <PrimaryButton variant="primary" href="/menu">
           Lihat Menu Lengkap
-        </Button>
-        <Button variant="secondary" href="https://wa.me/6281234567890" className="sm:ml-4">
+        </PrimaryButton>
+        <PrimaryButton variant="secondary" href="https://wa.me/6281234567890" className="sm:ml-4">
           Reservasi Meja
-        </Button>
+        </PrimaryButton>
       </div>
 
       {/* Carousel (4 images) */}

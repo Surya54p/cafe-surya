@@ -8,7 +8,7 @@ interface ButtonProps {
   className?: string;
 }
 
-export default function Button({ children, variant, href, onClick, className = '' }: ButtonProps) {
+export default function PrimaryButton({ children, variant, href, onClick, className = '' }: ButtonProps) {
   const baseClasses = 'px-6 py-3 rounded-lg font-medium transition duration-200 inline-block text-center';
 
   const variantClasses = {
