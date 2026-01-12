@@ -18,6 +18,7 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
@@ -28,7 +29,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "app/(admin)/admin/activity-report", "app/(admin)/admin/employee"  ],
+    "**/*.mts",
+    "app/(admin)/admin/activity-report",
+    "app/(admin)/admin/employee"
+  ],
   "exclude": ["node_modules"]
 }

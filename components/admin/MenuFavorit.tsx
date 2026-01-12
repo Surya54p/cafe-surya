@@ -13,12 +13,13 @@ const data = [
 export default function MenuFavorit() {
   return (
     <div className="bg-[#F7F9FB] rounded-[2rem] p-8 h-[400px] flex flex-col w-full">
-      <h3 className="font-bold text-black text-lg mb-6">Menu Sering Diorder (%)</h3>
-
+      <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-800 flex items-center justify-center gap-3">
+        Menu Sering Diorder
+      </h2>
       <div className="flex flex-col sm:flex-row items-center h-full gap-8">
         {/* CHART SECTION */}
         <div className="flex-1 w-full h-[200px] sm:h-full relative">
-           <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
                 data={data}
@@ -44,12 +45,12 @@ export default function MenuFavorit() {
           {data.map((item, index) => (
             <div key={index} className="flex items-center justify-between text-sm">
               <div className="flex items-center gap-3">
-                <span 
-                  className="w-3 h-3 rounded-full" 
+                <span
+                  className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: item.color }}
                 ></span>
                 <span className="text-gray-700 font-medium truncate max-w-[100px]" title={item.name}>
-                    {item.name}
+                  {item.name}
                 </span>
               </div>
               <span className="font-bold text-gray-900">{item.value}%</span>

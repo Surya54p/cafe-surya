@@ -3,6 +3,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MenuCard from '@/components/MenuCard';
 import MenuModal from '@/components/MenuModal';
+import { useCart } from '@/context/CartContext';
+import { ShoppingCart } from 'lucide-react';
+import Link from 'next/link';
 
 const SAMPLE_MENU = [
   {
@@ -68,6 +71,27 @@ const SAMPLE_MENU = [
     description: 'Kue cokelat moist dengan tekstur lembut dan lapisan ganache di atasnya.',
     image: '/gambar-lorem.png',
     type: 'Makanan',
+  }, {
+    id: 9,
+    name: 'Kue Cokelat',
+    price: 15000,
+    description: 'Kue cokelat moist dengan tekstur lembut dan lapisan ganache di atasnya.',
+    image: '/gambar-lorem.png',
+    type: 'Makanan',
+  }, {
+    id: 10,
+    name: 'Kue Cokelat',
+    price: 15000,
+    description: 'Kue cokelat moist dengan tekstur lembut dan lapisan ganache di atasnya.',
+    image: '/gambar-lorem.png',
+    type: 'Makanan',
+  }, {
+    id: 11,
+    name: 'Desert',
+    price: 15000,
+    description: 'Kue cokelat moist dengan tekstur lembut dan lapisan ganache di atasnya.',
+    image: '/gambar-lorem.png',
+    type: 'Desert',
   },
 ];
 
@@ -76,14 +100,15 @@ export default function MenuPage() {
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('All');
   const [selectedItem, setSelectedItem] = useState<any | null>(null);
+  const { addToCart, totalItems } = useCart();
 
   // debounce 2 seconds
   useEffect(() => {
-    const t = setTimeout(() => setDebouncedQuery(query.trim()), 2000);
+    const t = setTimeout(() => setDebouncedQuery(query.trim()), 1000);
     return () => clearTimeout(t);
   }, [query]);
 
-  const types = useMemo(() => ['All', ...Array.from(new Set(SAMPLE_MENU.map((m) => m.type)))], []);
+  const types = useMemo(() => ['All', ...Array.from(new Set(SAMPLE_MENU.map((menu) => menu.type)))], []);
 
   const filtered = useMemo(() => {
     return SAMPLE_MENU.filter((m) => {
@@ -94,22 +119,40 @@ export default function MenuPage() {
   }, [debouncedQuery, typeFilter]);
 
   function handleOrder(item: any) {
-    const text = `Saya ingin pesan: ${item.name} - Rp ${item.price}`;
-    const url = `https://wa.me/6281234567890?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
+    addToCart({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      image: item.image,
+    });
+    alert(`${item.name} berhasil ditambahkan ke keranjang!`);
   }
 
   return (
     <div className="px-6 py-12">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-          <h1 className="text-2xl font-semibold">Menu Kami</h1>
+          <div className="flex items-center gap-4">
+            <h1 className="text-2xl font-semibold">Menu Kami</h1>
+            <Link
+              href="/cart"
+              className="relative p-2 text-gray-600 hover:text-orange-600 transition border border-gray-200 rounded-md"
+              title="Ke Keranjang"
+            >
+              <ShoppingCart size={20} />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+          </div>
 
           <div className="flex items-center gap-3 w-full md:w-auto">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Cari menu... (2s debounce)"
+              placeholder="Cari menu... "
               className="flex-1 md:w-72 px-4 py-2 border border-gray-300 rounded-md bg-white"
             />
 

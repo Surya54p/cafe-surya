@@ -10,8 +10,8 @@ export default function HomePage() {
     <main className="min-h-screen text-gray-800">
       <HeroSection />
       <FeaturesSection />
-      <AboutSection />
       <MenuHighlightSection />
+      <AboutSection />
       <LocationSection />
       <CtaSection />
     </main>

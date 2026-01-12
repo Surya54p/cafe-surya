@@ -18,7 +18,7 @@ export default function ContactPage() {
   return (
     <main className="px-6 py-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl font-semibold mb-4">Hubungi Kami</h1>
+        <h1 className="text-3xl md:text-4xl font-semibold mb-4">Hubungi Kami</h1>
 
         <form onSubmit={handleSubmit} className="grid gap-4 mb-8">
           <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Nama" className="px-4 py-2 border border-gray-300 rounded-md" />

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import PrimaryButton from "./PrimaryButton";
-import { Coffee, Wifi, Armchair, DollarSign } from "lucide-react";
+import { Coffee, Wifi, Armchair, DollarSign, Lock, Music, Plug } from "lucide-react";
 
 function Carousel({ images }: { images: string[] }) {
   const [index, setIndex] = useState(0);
@@ -78,21 +78,29 @@ export default function HeroSection() {
         teman, atau sekadar melepas penat.
       </p>
       <div className="flex flex-wrap justify-center gap-4 mb-8">
-        <span className="px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2">
-          <Coffee className="w-4 h-4" />
+        <span className="px-4 py-2 bg-linear-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-full text-sm font-medium text-orange-800 flex items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+          <Coffee className="w-4 h-4 text-orange-600" />
           Kopi Lokal Berkualitas
         </span>
-        <span className="px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2">
-          <Wifi className="w-4 h-4" />
+        <span className="px-4 py-2 bg-linear-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-full text-sm font-medium text-orange-800 flex items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+          <Wifi className="w-4 h-4 text-orange-600" />
           WiFi Kencang
         </span>
-        <span className="px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2">
-          <Armchair className="w-4 h-4" />
+        <span className="px-4 py-2 bg-linear-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-full text-sm font-medium text-orange-800 flex items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+          <Armchair className="w-4 h-4 text-orange-600" />
           Tempat Nyaman
         </span>
-        <span className="px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2">
-          <DollarSign className="w-4 h-4" />
-          Harga Terjangkau
+        <span className="px-4 py-2 bg-linear-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-full text-sm font-medium text-orange-800 flex items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+          <Plug className="w-4 h-4 text-orange-600" />
+          Banyak Colokan
+        </span>
+        <span className="px-4 py-2 bg-linear-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-full text-sm font-medium text-orange-800 flex items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+          <Lock className="w-4 h-4 text-orange-600" />
+          Ruang Privasi
+        </span>
+        <span className="px-4 py-2 bg-linear-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-full text-sm font-medium text-orange-800 flex items-center gap-2 shadow-sm hover:shadow-md transition-shadow">
+          <Music className="w-4 h-4 text-orange-600" />
+          Live music
         </span>
       </div>
 

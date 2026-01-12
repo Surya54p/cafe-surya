@@ -4,6 +4,8 @@ import "../../app/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+import { CartProvider } from "@/context/CartContext";
+
 const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
@@ -22,15 +24,17 @@ export default function PublictLayout({
   return (
     <html lang="en">
       <body className={`${raleway.variable} antialiased`}>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
+        <CartProvider>
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
 
-          <main className="flex-1">
-            <div className="mx-auto w-full max-w-7xl px-4">{children}</div>
-          </main>
+            <main className="flex-1">
+              <div className="mx-auto w-full max-w-7xl px-4">{children}</div>
+            </main>
 
-          <Footer />
-        </div>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );
